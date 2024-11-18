@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= cheese.name%></title>
+</head>
+<body>
+    <h1><%= cheese.name%></h1>
+    <%  if(cheese.hasMatured) { %>
+        <p>Yes I am Mr. Cheese.</p>
+    <% } else { %>
+        <p>Please, call me <%= cheese.name %>, Mr. Cheese is my father. </p>
+    <% } %> 
+    
+    <ul style="list-style-type:none; padding: 0; margin: 0;"><b>Tags:</b>
+    <% cheese.tags.forEach((tag) => {%> 
+        <li>
+            <%=tag%>
+        </li>
+        <% }) %>
+    
+    </ul><br>
+</body>
+<a href="/cheeses">Back to Cheese Cave</a>
+</html>
+
+<!-- hasMatured: Boolean, -->

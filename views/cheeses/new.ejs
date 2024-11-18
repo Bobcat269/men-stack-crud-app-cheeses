@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cheese</title>
+</head>
+<body>
+    <h1>Add a Cheese to the Collection!</h1>
+    <form action ="/cheeses" method="POST">
+        <label>Name:</label>
+        <input type ="text" name="name" id="name"/>
+        <label for="hasMatured">Has Matured?</label>
+        <input type = "checkbox" name="hasMatured" id="hasMatured"/>
+        <label for="tags">Additional Tags</label>
+        <input type = "text" name="tags" id="tags"/>
+        <button type = "submit">Add Cheese</button>
+    </form>
+</body>
+<a href="/cheeses">Back to Cheese Cave</a>
+</html>

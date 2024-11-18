@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheese Collection</title>
+</head>
+<body>
+    <h1>Cheese Cave</h1>
+    <ul>
+        <% cheeses.forEach((cheese) => {%>
+            <li>
+                <a href="/cheeses/<%= cheese._id%>"><%= cheese.name%></a>
+                </li>
+        <%}); %>
+    </ul>
+    <a href="/cheeses/new">Add New Cheese</a>   
+</body>
+</html>
