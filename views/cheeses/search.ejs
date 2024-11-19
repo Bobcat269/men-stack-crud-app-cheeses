@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+<body>
+    <h1>Search Results Page</h1>
+    <ul style="list-style-type: none; padding: 0;margin: 0;"><b>Results</b>
+        <% search.forEach((item) =>{%>
+            <li>
+                <%=item.name%>:
+                <%  if(item.hasMatured) { %>
+                    This is a mature cheese.
+                <% } else { %>
+                    This cheese isn\'t mature yet.
+                <% } %>  
+                Tags: 
+                <% item.tags.forEach((tag) => {%> 
+                    
+                        <%=tag%> | 
+                    
+                    <% }) %>
+            </li>
+
+       <%  }) %> 
+        </ul><br>
+
+    
+</body>
+<form action ="/cheeses/search/">
+    <input type="search" placeholder="Search more tags" id="myQuery" name="query">
+    <button>Search</button>
+   </form>
+<a href="/cheeses">Back to Cheese Cave</a>
+</html>

@@ -52,9 +52,17 @@ app.put('/cheeses/:cheeseId', async (req,res)=>{
     } else {
         req.body.hasMatured = false
     }
+    //
+    const myArray = req.body.tags.split(',')
+    const anArray = myArray.map(element => {
+        return element.toLowerCase().trim()
+    });
+
+    req.body.tags = anArray
     await Cheese.findByIdAndUpdate(req.params.cheeseId, req.body)
     res.redirect('/cheeses')
 })
+
 
 // GET /cheeses
 app.get("/cheeses", async (req, res) => {
@@ -77,6 +85,12 @@ app.post("/cheeses", async (req, res) => {
     } else {
       req.body.hasMatured = false;
     }
+    const myArray = req.body.tags.split(',')
+    const anArray = myArray.map(element => {
+        return element.toLowerCase().trim()
+    });
+
+    req.body.tags = myArray
 //To push multiple text entries to the tags array we probably....
 //make a function that breaks down the text via delimiter and pushes it
 //to an array, then we make a foreachloop here (in app.post) that pushes
@@ -85,6 +99,15 @@ app.post("/cheeses", async (req, res) => {
     res.redirect('/cheeses')
   });
 
+  http://localhost:3001/cheeses/search/?search=hard  
+  //GET search page
+app.get("/cheeses/search", async (req,res) => {
+    // const searchTag = req.query.search
+    const searchResults = await Cheese.find({tags:{"$in" : [req.query.query]}})
+    res.render("cheeses/search.ejs", {
+        search: searchResults
+    })
+})
 
 //Cheese show route
 app.get("/cheeses/:cheeseId", async (req,res) =>{
