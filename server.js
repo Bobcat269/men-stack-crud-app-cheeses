@@ -31,11 +31,38 @@ app.get("/", async (req,res) => {
     res.render('index.ejs')
 })
 
+//DELETE cheeses
+app.delete('/cheeses/:cheeseId', async (req,res)=>{
+    await Cheese.findByIdAndDelete(req.params.cheeseId)
+    res.redirect('/cheeses')
+})
+
+//GET cheese edit page
+app.get('/cheeses/:cheeseId/edit', async (req,res)=>{
+    const targetCheese = await Cheese.findById(req.params.cheeseId)
+    res.render('cheeses/edit.ejs', {
+        cheese: targetCheese
+    })
+})
+
+//PUT cheese edit
+app.put('/cheeses/:cheeseId', async (req,res)=>{
+    if(req.body.hasMatured === 'on'){
+        req.body.hasMatured = true
+    } else {
+        req.body.hasMatured = false
+    }
+    await Cheese.findByIdAndUpdate(req.params.cheeseId, req.body)
+    res.redirect('/cheeses')
+})
+
 // GET /cheeses
 app.get("/cheeses", async (req, res) => {
     const allCheeses = await Cheese.find();
     //console.log(allFruits); //log to terminal
-    res.render("cheeses/index.ejs", { cheeses: allCheeses });
+    res.render("cheeses/index.ejs", { 
+        cheeses: allCheeses 
+    });
   });
 
 //GET cheeses POST page

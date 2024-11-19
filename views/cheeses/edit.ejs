@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%=cheese.name%></title>
+</head>
+<body>
+    <h1>Edit <%= cheese.name %></h1>
+    <form action="/cheeses/<%=cheese._id%>?_method=PUT" method="POST">
+        <label>Name:</label>
+        <input type="text" value = "<%= cheese.name %>"name="name" id="name"/>
+        <label>Has Matured?</label>
+        <input type ="checkbox" name ="hasMatured" id = "hasMatured" 
+        <% if (cheese.hasMatured) { %>
+        checked
+        <% } %> />
+        <label>Tags:</label>
+        <input type="text" value = "<%= cheese.tags %>"name="tags" id="tags"/>
+        <button type ="submit">Update <%= cheese.name %></button>
+    </form>
+
+</body>
+<a href="/cheeses">Back to Cheese Cave</a>
+</html>

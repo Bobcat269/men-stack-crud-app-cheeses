@@ -22,6 +22,10 @@
     
     </ul><br>
 </body>
+<a href="/cheeses/<%=cheese._id%>/edit">Edit <%= cheese.name %></a>
+<form action="/cheeses/<%=cheese._id%>?_method=DELETE" method="POST">
+    <button type="submit">Delete <%=cheese.name%></button>
+</form>
 <a href="/cheeses">Back to Cheese Cave</a>
 </html>
 
